@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/rummy-point-tracker/static/css/main.8f6f7baa.css",
-    "main.js": "/rummy-point-tracker/static/js/main.1d8fe61a.js",
+    "main.js": "/rummy-point-tracker/static/js/main.d5141995.js",
     "index.html": "/rummy-point-tracker/index.html",
     "main.8f6f7baa.css.map": "/rummy-point-tracker/static/css/main.8f6f7baa.css.map",
-    "main.1d8fe61a.js.map": "/rummy-point-tracker/static/js/main.1d8fe61a.js.map"
+    "main.d5141995.js.map": "/rummy-point-tracker/static/js/main.d5141995.js.map"
   },
   "entrypoints": [
     "static/css/main.8f6f7baa.css",
-    "static/js/main.1d8fe61a.js"
+    "static/js/main.d5141995.js"
   ]
 }
