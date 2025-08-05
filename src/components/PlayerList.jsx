@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Button, Row, Col, Modal, Form, Badge } from "react-bootstrap";
-import { Plus, Trophy, UserX, Trash2, XCircle } from "lucide-react";
+import { Plus, Trophy, UserX, Trash2, XCircle, History } from "lucide-react";
 
 const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
   const [showScoreModal, setShowScoreModal] = useState(false);
@@ -8,7 +8,6 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [score, setScore] = useState("");
 
-  // For adding score
   const openScoreModal = (player) => {
     setSelectedPlayer(player);
     setScore("");
@@ -25,7 +24,6 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
     }
   };
 
-  // For delete confirm
   const openDeleteModal = (player) => {
     setSelectedPlayer(player);
     setShowDeleteModal(true);
@@ -40,15 +38,15 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
   return (
     <div className="mt-4">
       <h5 className="text-center mb-3">
-        <Trophy size={18} className="mb-1 me-1" />
+        <Trophy size={18} fill="#FFC107" className="mb-1 me-1 text-warning" />
         Player List
       </h5>
 
       {players.map((player, idx) => (
         <Card
           key={idx}
-          className={`mb-2 shadow-sm border-${
-            player.points >= 320 ? "danger" : "success"
+          className={`mb-3 shadow-sm border-${
+            player.points > 320 ? "danger" : "success"
           }`}
         >
           <Card.Body>
@@ -56,11 +54,11 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
               <Col xs={7}>
                 <strong className="text-capitalize">{player.name}</strong>
                 <div>
-                  Points: <Badge bg="secondary">{player.points}</Badge>
+                  Total Points: <Badge bg="secondary">{player.points}</Badge>
                 </div>
-                <div>
+                <div className="mb-1">
                   Status:{" "}
-                  {player.points >= 320 ? (
+                  {player.points > 320 ? (
                     <Badge bg="danger">
                       <UserX size={12} className="me-1" />
                       Eliminated
@@ -69,18 +67,36 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
                     <Badge bg="success">Active</Badge>
                   )}
                 </div>
+
+                {/* Show Score History */}
+                {player.scores?.length > 0 && (
+                  <div className="mt-2 small">
+                    <History size={14} className="me-1 mb-1" />
+                    Score History:{" "}
+                    {player.scores.map((s, i) => (
+                      <Badge
+                        key={i}
+                        bg="light"
+                        text="dark"
+                        className="me-1 mb-1"
+                      >
+                        +{s}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </Col>
 
               <Col xs={5} className="text-end">
                 <div className="d-flex justify-content-end gap-2">
-                  {player.points < 320 && (
+                  {player.points <= 320 && (
                     <Button
                       size="sm"
                       variant="primary"
                       onClick={() => openScoreModal(player)}
                     >
                       <Plus size={14} className="me-1" />
-                      Add Score
+                       Score
                     </Button>
                   )}
                   <Button
@@ -132,7 +148,7 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
         </Modal.Footer>
       </Modal>
 
-      {/* Delete Confirmation Modal */}
+      {/* Delete Modal */}
       <Modal
         show={showDeleteModal}
         onHide={() => setShowDeleteModal(false)}

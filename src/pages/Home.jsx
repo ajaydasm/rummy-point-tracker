@@ -13,15 +13,26 @@ const Home = () => {
 const addPlayer = (name, startingPoints = 0) => {
   if (!name.trim()) return;
 
+  // Check for duplicate (case-insensitive)
+  const isDuplicate = players.some(
+    (p) => p.name.trim().toLowerCase() === name.trim().toLowerCase()
+  );
+
+  if (isDuplicate) {
+    alert("A player with this name already exists.");
+    return;
+  }
+
   const newPlayer = {
     name,
     points: startingPoints,
     scores: startingPoints > 0 ? [startingPoints] : [],
-    status: startingPoints >= 320 ? "eliminated" : "active",
+    status: startingPoints > 320 ? "eliminated" : "active",
   };
 
   setPlayers([...players, newPlayer]);
 };
+
 const deletePlayer = (name) => {
   const updated = players.filter((p) => p.name !== name);
   setPlayers(updated);
@@ -44,7 +55,7 @@ const deletePlayer = (name) => {
           ...p,
           points: newPoints,
           scores: [...(p.scores || []), pointsToAdd], // track history
-          status: newPoints >= 320 ? "eliminated" : "active",
+          status: newPoints > 320 ? "eliminated" : "active",
         };
       }
       return p;
@@ -75,6 +86,7 @@ const deletePlayer = (name) => {
             onSubmit={(e) => {
               e.preventDefault();
               addPlayer(newPlayerName);
+              setNewPlayerName("");
             }}
           >
             <Row>
