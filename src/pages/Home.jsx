@@ -3,9 +3,22 @@ import ScoreEntryForm from "../components/ScoreEntryForm";
 import PlayerList from "../components/PlayerList";
 import WinnerBanner from "../components/WinnerBanner";
 import ThemeToggle from "../components/ThemeToggle";
-import { Container, Card, Button, Row, Col, Form, Fade ,Modal } from "react-bootstrap";
-import { RotateCcw ,XCircle } from "lucide-react";
+import {
+  Container,
+  Card,
+  Button,
+  Row,
+  Col,
+  Form,
+  Fade,
+  Modal,
+  Badge,
+  ListGroup,
+} from "react-bootstrap";
+import { RotateCcw, XCircle , Plus , Users} from "lucide-react";
 import { toast } from "react-toastify";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import "./Home.css";
 
 const LOCAL_STORAGE_KEY = "rummy_players";
 
@@ -100,13 +113,16 @@ const Home = () => {
   return (
     <Container className="py-4 animate__animated animate__fadeIn">
       {/* Header */}
-      <Row className="align-items-center mb-4">
-        <Col xs={8}>
-          <h4 className="mb-0 text-start text-sm-center fw-bold">
-            🃏 RummyPointBook
-          </h4>
+      <Row className="align-items-center mb-4 g-2 flex-nowrap">
+        <Col xs="auto" className="d-flex align-items-center">
+          <h4 className="mb-0 fw-bold">🃏</h4>
         </Col>
-        <Col xs={2} className="text-end">
+
+        <Col className="d-flex align-items-center justify-content-center">
+          <h5 className="mb-0 fw-bold text-nowrap">RummyPointBook</h5>
+        </Col>
+
+        <Col xs="auto" className="d-flex justify-content-end">
           <Button
             variant="outline-danger"
             size="sm"
@@ -116,7 +132,8 @@ const Home = () => {
             <RotateCcw size={16} className="me-1" />
           </Button>
         </Col>
-        <Col xs={2} className="text-end">
+
+        <Col xs="auto" className="d-flex justify-content-end">
           <ThemeToggle />
         </Col>
       </Row>
@@ -124,8 +141,10 @@ const Home = () => {
       {/* Game State */}
       {!gameStarted ? (
         <Fade in={!gameStarted}>
-          <Card className="p-4 shadow-sm rounded-4 border-light bg-light-subtle animate__animated animate__fadeInUp">
-            <h5 className="mb-3 fw-semibold">👥 Add Players</h5>
+          <Card className="p-4 glass-card animate__animated animate__fadeInUp">
+            <h5 className="mb-3 fw-semibold">
+              <Users size={18} fill="#0d6efd" stroke="#0d6efd" /> Add Players
+            </h5>
             <Form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -134,7 +153,7 @@ const Home = () => {
               }}
             >
               <Row className="g-2">
-                <Col xs={8}>
+                <Col xs={10}>
                   <Form.Control
                     type="text"
                     placeholder="Enter player name"
@@ -143,32 +162,59 @@ const Home = () => {
                     className="rounded-pill"
                   />
                 </Col>
-                <Col xs={4}>
+                <Col xs={2} className="d-flex align-items-center">
                   <Button
                     type="submit"
                     variant="primary"
-                    className="w-100 rounded-pill"
+                    className="w-100  text-center p-1"
+                    title="Add Player"
                   >
-                    ➕ Add
+                    <Plus size={18} />
                   </Button>
                 </Col>
               </Row>
             </Form>
 
             {/* Player Preview List */}
-            <div className="mt-3">
-              <ul className="list-unstyled mb-0">
-                {players.map((p, i) => (
-                  <li key={i} className="text-muted small">
-                    🔹 {p.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {players.length > 0 && (
+              <div className="mt-4">
+                <h6 className="text-muted mb-2 fw-bold">
+                  <Users size={18} fill="#8052ffff" stroke="#413c3cff" />{" "}
+                  Players Joined
+                </h6>
+                <ListGroup variant="flush" className="border rounded shadow-sm">
+                  <TransitionGroup component={null}>
+                    {players.map((p, i) => (
+                      <CSSTransition
+                        key={i}
+                        timeout={500}
+                        classNames="shake-badge"
+                      >
+                        <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                          <div className="d-flex align-items-center">
+                            <span className="me-2">🔹</span>
+                            <span className="text-capitalize fw-medium">
+                              {p.name}
+                            </span>
+                          </div>
+                          <Badge
+                            bg={
+                              p.status === "eliminated" ? "danger" : "secondary"
+                            }
+                          >
+                            {p.status === "eliminated" ? "Eliminated" : "Ready"}
+                          </Badge>
+                        </ListGroup.Item>
+                      </CSSTransition>
+                    ))}
+                  </TransitionGroup>
+                </ListGroup>
+              </div>
+            )}
 
             <Button
               variant="success"
-              className="mt-4 w-100 rounded-pill fw-semibold"
+              className="mt-4 w-100 rounded-pill fw-semibold animate__animated animate__pulse animate__repeat-2"
               onClick={startGame}
             >
               🚀 Start Game
@@ -177,7 +223,7 @@ const Home = () => {
         </Fade>
       ) : (
         <Fade in={gameStarted}>
-          <div className="animate__animated animate__fadeInUp">
+          <div className="animate__animated animate__bounceIn">
             <WinnerBanner winner={winner} />
             <ScoreEntryForm
               players={players}

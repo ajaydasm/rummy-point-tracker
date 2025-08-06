@@ -97,25 +97,24 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
           key={idx}
           className={`mb-3 shadow border-${
             player.points > 320 ? "danger" : "success"
-          }`}
+          } position-relative`}
         >
+          <div className="position-absolute top-0 end-0 p-2">
+            {player.points > 320 ? (
+              <Badge bg="danger" className="d-flex align-items-center gap-1">
+                <UserX size={12} />
+                Eliminated
+              </Badge>
+            ) : (
+              <Badge bg="success">Active</Badge>
+            )}
+          </div>
           <Card.Body>
             <Row className="align-items-center">
               <Col xs={12} md={7}>
                 <h6 className="text-capitalize mb-1">{player.name}</h6>
                 <div>
                   Total Points: <Badge bg="dark">{player.points}</Badge>
-                </div>
-                <div className="my-1">
-                  Status:{" "}
-                  {player.points > 320 ? (
-                    <Badge bg="danger">
-                      <UserX size={12} className="me-1" />
-                      Eliminated
-                    </Badge>
-                  ) : (
-                    <Badge bg="success">Active</Badge>
-                  )}
                 </div>
                 {player.scores?.length > 0 && (
                   <div className="mt-2 small">
@@ -158,7 +157,7 @@ const PlayerList = ({ players, onAddScore, onDeletePlayer }) => {
                           onClick={() => openEditModal(player)}
                         >
                           <Pencil size={14} className="me-1" />
-                          Edit Last
+                          Edit
                         </Button>
                       )}
                     </>

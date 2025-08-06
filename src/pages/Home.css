@@ -1,0 +1,46 @@
+/* Custom shake animation for badges */
+.shake-badge-enter {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.shake-badge-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    animation: shake 0.4s ease;
+    transition: opacity 300ms, transform 300ms;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    /* semi-transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
