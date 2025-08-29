@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "name": "Annan",
+        "avatar": "/players/annan.png"
+    },
+    {
+        "id": 2,
+        "name": "Ajas",
+        "avatar": "/players/ajas.png"
+    },
+    {
+        "id": 3,
+        "name": "Chakkara",
+        "avatar": "/players/chakkara.png"
+    },
+    {
+        "id": 4,
+        "name": "Rahul",
+        "avatar": "/players/rahul.png"
+    },
+    {
+        "id": 5,
+        "name": "Thantha",
+        "avatar": "/players/thantha.png"
+    },
+    {
+        "id": 6,
+        "name": "Saji",
+        "avatar": "/players/saji.png"
+    },
+    {
+        "id": 7,
+        "name": "Jineshp",
+        "avatar": "/players/jineshp.png"
+    },
+    {
+        "id": 8,
+        "name": "Sonu",
+        "avatar": "/players/sonu.png"
+    },
+    {
+        "id": 9,
+        "name": "Dasan",
+        "avatar": "/players/dasan.png"
+    },
+    {
+        "id": 10,
+        "name": "Petta",
+        "avatar": "/players/petta.png"
+    },
+    {
+        "id": 11,
+        "name": "Kailas",
+        "avatar": "/players/kailas.png"
+    },
+    {
+        "id": 12,
+        "name": "Kannan",
+        "avatar": "/players/kannan.png"
+    },
+    {
+        "id": 13,
+        "name": "Subhash",
+        "avatar": "/players/subhash.png"
+    }
+]
