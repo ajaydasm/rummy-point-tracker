@@ -1,13 +1,27 @@
 {
   "files": {
     "main.css": "/rummy-point-tracker/static/css/main.36513d48.css",
-    "main.js": "/rummy-point-tracker/static/js/main.74d54846.js",
+    "main.js": "/rummy-point-tracker/static/js/main.bccb10ba.js",
+    "static/media/jineshp.png": "/rummy-point-tracker/static/media/jineshp.91b4ac541b334ff032af.png",
+    "static/media/saji.png": "/rummy-point-tracker/static/media/saji.5034260d5c4b2d92f2e2.png",
+    "static/media/rahul.png": "/rummy-point-tracker/static/media/rahul.9374673fa35e598e6788.png",
+    "static/media/chakkara.png": "/rummy-point-tracker/static/media/chakkara.20734a8ae6aa93945c66.png",
+    "static/media/annan.png": "/rummy-point-tracker/static/media/annan.da212436f1b72dfc0f89.png",
+    "static/media/petta.png": "/rummy-point-tracker/static/media/petta.748f63d5e8e93caa4f7a.png",
+    "static/media/kannan.png": "/rummy-point-tracker/static/media/kannan.f3abc336e7ea930d86c1.png",
+    "static/media/default-avatar.png": "/rummy-point-tracker/static/media/default-avatar.7cace3495ac6928627d5.png",
+    "static/media/thantha.png": "/rummy-point-tracker/static/media/thantha.30bf44e7a87580e82c7a.png",
+    "static/media/kailas.png": "/rummy-point-tracker/static/media/kailas.e6cb978634855d51d7a0.png",
+    "static/media/ajas.png": "/rummy-point-tracker/static/media/ajas.c1557c00f04e76da0f01.png",
+    "static/media/dasan.png": "/rummy-point-tracker/static/media/dasan.ba599915ce6c44b7a6b2.png",
+    "static/media/subhash.png": "/rummy-point-tracker/static/media/subhash.15cad247c7b48cc2f538.png",
+    "static/media/sonu.png": "/rummy-point-tracker/static/media/sonu.16b6827fd5ab3d55d8a3.png",
     "index.html": "/rummy-point-tracker/index.html",
     "main.36513d48.css.map": "/rummy-point-tracker/static/css/main.36513d48.css.map",
-    "main.74d54846.js.map": "/rummy-point-tracker/static/js/main.74d54846.js.map"
+    "main.bccb10ba.js.map": "/rummy-point-tracker/static/js/main.bccb10ba.js.map"
   },
   "entrypoints": [
     "static/css/main.36513d48.css",
-    "static/js/main.74d54846.js"
+    "static/js/main.bccb10ba.js"
   ]
 }
